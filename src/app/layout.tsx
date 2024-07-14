@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { JetBrains_Mono, Open_Sans, Rubik } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header";
+import PageTransition from "@/components/page-transition";
+import StairTransition from "@/components/stair-transition";
 
-const inter = Inter({ subsets: ["latin"] });
+const rubik = Rubik({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-rubik",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={rubik.className}>
+        <Header />
+        <StairTransition />
+        <PageTransition>{children}</PageTransition>
+      </body>
     </html>
   );
 }
